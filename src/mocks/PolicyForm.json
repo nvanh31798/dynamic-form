@@ -1,0 +1,177 @@
+{
+    "id": 1,
+    "title": "Form 1",
+    "description": "This test form",
+    "createdDate": "2024/01/01",
+    "fee": "10000",
+    "sections": [
+        {
+            "id": "stepper-1",
+            "type": "stepper",
+            "steps": [
+                {
+                    "id": "step-1",
+                    "label": "Insured Object",
+                    "fields": [
+                        {
+                            "id": "insured-table",
+                            "type": "field",
+                            "fieldType": "table",
+                            "headers": [
+                                {
+                                    "label": "Full Name",
+                                    "key": "fullName"
+                                },
+                                {
+                                    "label": "ID/Passport Number",
+                                    "key": "passportNumber"
+                                },
+                                {
+                                    "label": "Age",
+                                    "key": "age"
+                                },
+                                {
+                                    "label": "Gender",
+                                    "key": "gender"
+                                },
+                                {
+                                    "label": "Relationship",
+                                    "key": "relationship"
+                                },
+                                {
+                                    "label": "Package",
+                                    "key": "package"
+                                },
+                                {
+                                    "label": "Start Date",
+                                    "key": "startDate"
+                                },
+                                {
+                                    "label": "End Date",
+                                    "key": "endDate"
+                                },
+                                {
+                                    "label": "Fee",
+                                    "key": "fee"
+                                }
+                            ],
+                            "dataUrl": "http://localhost",
+                            "model": "InsuredObject",
+                            "searchable": true,
+                            "searchField": "fullName",
+                            "addable": true,
+                            "addNewFormId": 2
+                        }
+                    ]
+                },
+                {
+                    "id": "step-2",
+                    "label": "Buyer Information",
+                    "title": "General Information",
+                    "fields": [
+                        {
+                            "id": "fullName",
+                            "fieldCode": "fullName",
+                            "label": "Full Name",
+                            "fieldType": "input",
+                            "prefilled": "",
+                            "validationRules": {
+                                "required": true,
+                                "max": 50,
+                                "regex": "^[a-zA-Z"
+                            }
+                        },
+                        {
+                            "id": "dateOfBirth",
+                            "label": "Date of Birth",
+                            "fieldType": "input",
+                            "fieldCode": "dateOfBirth",
+                            "prefilled": "",
+                            "validationRules": {
+                                "required": true,
+                                "max": 70,
+                                "regex": "^[a-zA-Z"
+                            }
+                        },
+                        {
+                            "id": "gender",
+                            "label": "Gender",
+                            "fieldType": "input",
+                            "fieldCode": "gender",
+                            "prefilled": "",
+                            "validationRules": {
+                                "required": true,
+                                "max": 50,
+                                "regex": "^[a-zA-Z"
+                            }
+                        },
+                        {
+                            "id": "passportNumber",
+                            "label": "ID/Passport Number",
+                            "fieldCode": "passportNumber",
+                            "fieldType": "input",
+                            "prefilled": "",
+                            "validationRules": {
+                                "required": true,
+                                "max": 50,
+                                "regex": "^[a-zA-Z"
+                            }
+                        },
+                        {
+                            "id": "dateOfIssued",
+                            "label": "Date of Issued",
+                            "fieldType": "input",
+                            "fieldCode": "dateOfIssued",
+                            "prefilled": "",
+                            "validationRules": {
+                                "required": true,
+                                "max": 50,
+                                "regex": "^[a-zA-Z"
+                            }
+                        },
+                        {
+                            "id": "placeOfIssued",
+                            "label": "Place of Issued",
+                            "fieldType": "input",
+                            "fieldCode": "placeOfIssued",
+                            "prefilled": "",
+                            "validationRules": {
+                                "required": false,
+                                "max": 50,
+                                "regex": "^[a-zA-Z"
+                            }
+                        },
+                        {
+                            "id": "address",
+                            "label": "Address",
+                            "fieldCode": "address",
+                            "fieldType": "input",
+                            "prefilled": "",
+                            "validationRules": {
+                                "required": false,
+                                "max": 100
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "step-3",
+                    "label": "Insured Object",
+                    "fields": [
+                        {
+                            "id": "address",
+                            "label": "Address",
+                            "fieldCode": "address",
+                            "fieldType": "input",
+                            "prefilled": "",
+                            "validationRules": {
+                                "required": true,
+                                "max": 100
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
