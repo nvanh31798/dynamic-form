@@ -3,7 +3,7 @@ export enum FieldType {
   NUMBER = "number",
   TABLE = "table",
   DROPDOWN = "dropdown",
-  DATE = "date",
+  DATEPICKER = "datePicker",
   CHECKBOX = "checkbox",
   INPUT = "input",
 }

@@ -29,7 +29,7 @@ export const InputField = ({ field, onChange, onBlur }: InputFieldProps) => {
   return (
     <TextField
       error={!!error && touched}
-      helperText={error}
+      helperText={touched && error}
       onChange={(e) => handleChange(e)}
       onBlur={(e) => handleblur(e)}
       sx={{ minWidth: "300px" }}

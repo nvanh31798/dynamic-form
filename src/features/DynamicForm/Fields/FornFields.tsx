@@ -23,8 +23,10 @@ export const FornFields = ({ field, ...props }: FornFieldsProps) => {
     case FieldType.INPUT:
       const inputField = field as InputFieldModel;
       return <InputField {...props} field={inputField} />;
+    case FieldType.DATEPICKER:
+      return <InputField {...props} field={field} />;
+
     case FieldType.CHECKBOX:
-    case FieldType.DATE:
     case FieldType.TEXT:
     case FieldType.DROPDOWN:
     case FieldType.NUMBER:
