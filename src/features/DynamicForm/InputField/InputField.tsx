@@ -12,7 +12,7 @@ interface InputFieldProps {
 }
 
 export const InputField = ({ field, onChange, onBlur }: InputFieldProps) => {
-  const [formfield, meta, helpers] = useField(field?.fieldCode ?? "");
+  const [, meta, ] = useField(field?.fieldCode ?? "");
   const { value, error, touched } = meta;
 
   const handleChange = (

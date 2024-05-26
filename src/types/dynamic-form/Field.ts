@@ -5,6 +5,8 @@ export interface ValidationRules {
   regex?: string;
   max?: number;
   min?: number;
+  minDate?: Date;
+  maxDate?: Date;
 }
 
 export interface Field {

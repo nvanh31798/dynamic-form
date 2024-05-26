@@ -5,6 +5,9 @@ import { TableFieldModel } from "../../../types/dynamic-form/TableField";
 import { TableField } from "../TableField/TableField";
 import { InputFieldModel } from "../../../types/dynamic-form/InputField";
 import { InputField } from "../InputField/InputField";
+import { DatePickerField } from "../../../components/DatePickerField/DatePickerField";
+import { DropDownField } from "../../../components/DropDownField/DropDownField";
+import { DropdownFieldModel } from "../../../types/dynamic-form/DropdownField";
 
 interface FornFieldsProps {
   field: Field;
@@ -24,11 +27,13 @@ export const FornFields = ({ field, ...props }: FornFieldsProps) => {
       const inputField = field as InputFieldModel;
       return <InputField {...props} field={inputField} />;
     case FieldType.DATEPICKER:
-      return <InputField {...props} field={field} />;
+      return <DatePickerField {...props} field={field} />;
+    case FieldType.DROPDOWN:
+      const dropdownField = field as DropdownFieldModel;
 
+      return <DropDownField {...props} field={dropdownField} />;
     case FieldType.CHECKBOX:
     case FieldType.TEXT:
-    case FieldType.DROPDOWN:
     case FieldType.NUMBER:
       return <></>;
   }

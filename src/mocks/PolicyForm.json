@@ -84,25 +84,33 @@
                         {
                             "id": "dateOfBirth",
                             "label": "Date of Birth",
-                            "fieldType": "input",
+                            "fieldType": "datePicker",
                             "fieldCode": "dateOfBirth",
                             "prefilled": "",
                             "validationRules": {
                                 "required": true,
                                 "max": 70,
-                                "regex": "^[a-zA-Z"
+                                "minDate": "20/05/2024"
                             }
                         },
                         {
                             "id": "gender",
                             "label": "Gender",
-                            "fieldType": "input",
+                            "fieldType": "dropdown",
                             "fieldCode": "gender",
+                            "dropdownValues": [
+                                {
+                                    "id": 1,
+                                    "label": "Male"
+                                },
+                                {
+                                    "id": 2,
+                                    "label": "Female"
+                                }
+                            ],
                             "prefilled": "",
                             "validationRules": {
-                                "required": true,
-                                "max": 50,
-                                "regex": "^[a-zA-Z"
+                                "required": true
                             }
                         },
                         {
@@ -120,7 +128,7 @@
                         {
                             "id": "dateOfIssued",
                             "label": "Date of Issued",
-                            "fieldType": "input",
+                            "fieldType": "datePicker",
                             "fieldCode": "dateOfIssued",
                             "prefilled": "",
                             "validationRules": {
