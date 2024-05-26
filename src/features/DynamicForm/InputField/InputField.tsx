@@ -34,7 +34,7 @@ export const InputField = ({ field, onChange, onBlur }: InputFieldProps) => {
       onBlur={(e) => handleblur(e)}
       sx={{ minWidth: "300px" }}
       value={value}
-      className="min-w-96 grow"
+      className="grow"
       name={field.fieldCode}
       label={field.label}
       id={field.id}

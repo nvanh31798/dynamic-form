@@ -15,4 +15,5 @@ export interface Field {
   fieldCode?: string;
   label?: string;
   validationRules?: ValidationRules;
+  prefilled?: string;
 }

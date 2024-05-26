@@ -6,7 +6,7 @@ import moment from "moment";
 export const useValidation = () => {
   const getValidationsSchemaFromField = (fields: Field[]) => {
     const validationObj = {} as { [key: string]: any };
-    fields.forEach((field) => {
+    fields?.forEach((field) => {
       const fieldName = field.fieldCode ?? "";
 
       if (field.validationRules) {

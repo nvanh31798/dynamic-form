@@ -100,15 +100,15 @@
                             "fieldCode": "gender",
                             "dropdownValues": [
                                 {
-                                    "id": 1,
+                                    "id": "Male",
                                     "label": "Male"
                                 },
                                 {
-                                    "id": 2,
+                                    "id": "Female",
                                     "label": "Female"
                                 }
                             ],
-                            "prefilled": "",
+                            "prefilled": "Male",
                             "validationRules": {
                                 "required": true
                             }
@@ -157,23 +157,6 @@
                             "prefilled": "",
                             "validationRules": {
                                 "required": false,
-                                "max": 100
-                            }
-                        }
-                    ]
-                },
-                {
-                    "id": "step-3",
-                    "label": "Insured Object",
-                    "fields": [
-                        {
-                            "id": "address",
-                            "label": "Address",
-                            "fieldCode": "address",
-                            "fieldType": "input",
-                            "prefilled": "",
-                            "validationRules": {
-                                "required": true,
                                 "max": 100
                             }
                         }

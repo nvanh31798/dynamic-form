@@ -1,8 +1,9 @@
 import { Field } from "./Field";
 
 interface DropdownValueModel {
-  id: number;
+  id: string;
   label: string;
+  
 }
 
 export interface DropdownFieldModel extends Field {

@@ -6,8 +6,9 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import { FornFields } from "../Fields/FornFields";
 import { Button } from "@mui/material";
-import { FormikErrors } from "formik";
+import { FormikErrors, FormikTouched } from "formik";
 import { useValidation } from "../hooks/useValidation";
+import _ from "lodash";
 
 interface StepperSectionProps {
   steps: StepModel[];
@@ -17,24 +18,41 @@ interface StepperSectionProps {
   onBlur?: (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onSubmit?: (e?: React.FormEvent<HTMLFormElement> | undefined) => void;
   isValid?: boolean;
-  errors: FormikErrors<{}>;
   setValidationSchema?: Dispatch<SetStateAction<{}>>;
+  validationForm?: (values?: any) => void;
+  setTouched?: (
+    touched: FormikTouched<{}>,
+    shouldValidate?: boolean | undefined
+  ) => Promise<void | FormikErrors<{}>>;
 }
 
 export const StepperSection = ({
   steps,
   onSubmit,
   setValidationSchema,
-  errors,
+  validationForm,
   isValid,
+  setTouched,
   ...props
 }: StepperSectionProps) => {
   const [activeStep, setActiveStep] = useState(0);
   const currentStep = steps[activeStep];
   const { getValidationsSchemaFromField } = useValidation();
 
+  const setStepFieldTouched = (
+    touched: boolean,
+    callback?: (errors?: void | FormikErrors<{}>) => void
+  ) => {
+    const currentFieldsTouched = currentStep.fields?.map((field) => {
+      return [field.fieldCode as string, touched];
+    });
+    setTouched?.(Object.fromEntries(currentFieldsTouched), true).then(
+      (errors) => callback?.(errors)
+    );
+  };
+
   useEffect(() => {
-    const validationSchema = getValidationsSchemaFromField(currentStep.fields);
+    const validationSchema = getValidationsSchemaFromField(currentStep?.fields);
     setValidationSchema?.(validationSchema);
   }, [activeStep]);
 
@@ -42,13 +60,25 @@ export const StepperSection = ({
     if (!currentStep) {
       return <></>;
     }
-    return currentStep?.fields.map((field) => (
+    return currentStep?.fields?.map((field) => (
       <FornFields {...props} field={field} />
     ));
   };
 
   const handleNextStep = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBackStep = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleSubmit = (errors?: void | FormikErrors<{}>) => {
+    if (!_.isEmpty(errors)) {
+      return;
+    }
+    onSubmit?.();
+    handleNextStep();
   };
 
   return (
@@ -61,6 +91,9 @@ export const StepperSection = ({
             </Step>
           );
         })}
+        <Step>
+          <StepLabel>Done</StepLabel>
+        </Step>
       </Stepper>
       <div className="mt-10 p-5 shadow-md">
         {steps[activeStep]?.title && (
@@ -80,7 +113,9 @@ export const StepperSection = ({
           {activeStep === steps.length - 1 && (
             <Button
               disabled={!isValid}
-              onClick={() => onSubmit?.()}
+              onClick={() => {
+                setStepFieldTouched(true, handleSubmit);
+              }}
               variant="contained"
             >
               Save
@@ -88,7 +123,7 @@ export const StepperSection = ({
           )}
           {activeStep > 0 && (
             <Button
-              onClick={() => setActiveStep(activeStep - 1)}
+              onClick={() => handleBackStep()}
               color={"error"}
               variant="contained"
             >

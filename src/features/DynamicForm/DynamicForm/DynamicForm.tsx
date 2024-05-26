@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Formik, FormikErrors } from "formik";
+import { Form, Formik, FormikErrors, FormikTouched } from "formik";
 import { SectionType } from "../../../types/dynamic-form/SectionType";
 import * as PolicyForm from "../../../mocks/PolicyForm.json";
 import { FormModel, SectionModel } from "../../../types/dynamic-form/Form";
@@ -18,20 +18,25 @@ export const DynamicForm = () => {
       e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => void,
     handleSubmit: (e?: React.FormEvent<HTMLFormElement> | undefined) => void,
+    validationForm: (values?: any) => void,
     isValid: boolean,
-    errors: FormikErrors<{}>
+    setTouched: (
+      touched: FormikTouched<{}>,
+      shouldValidate?: boolean | undefined
+    ) => Promise<void | FormikErrors<{}>>
   ) => {
     return sections.map((section) => {
       switch (section.type) {
         case SectionType.STEPPER:
           return (
             <StepperSection
+              validationForm={validationForm}
               onBlur={handleBlur}
               onChange={handleChange}
               onSubmit={handleSubmit}
               steps={section.steps ?? []}
               isValid={isValid}
-              errors={errors}
+              setTouched={setTouched}
               setValidationSchema={setValidationSchema}
             />
           );
@@ -48,7 +53,7 @@ export const DynamicForm = () => {
       validateOnBlur
       initialValues={{}}
       onSubmit={(values) => {
-        console.log(values);
+        console.log("values");
       }}
       validationSchema={validationSchema}
     >
@@ -58,14 +63,17 @@ export const DynamicForm = () => {
         handleBlur,
         handleChange,
         handleSubmit,
+        validateForm,
+        setTouched,
       }) => (
         <Form className="flex-auto">
           {renderSection(
             handleBlur,
             handleChange,
             handleSubmit,
+            validateForm,
             isValid,
-            errors
+            setTouched
           )}
         </Form>
       )}

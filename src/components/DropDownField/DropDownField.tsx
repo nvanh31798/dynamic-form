@@ -1,6 +1,5 @@
-import * as React from "react";
+import { useEffect } from "react";
 import { useField } from "formik";
-import { Moment } from "moment";
 import {
   FormControl,
   InputLabel,
@@ -23,26 +22,30 @@ export const DropDownField = ({ field, onChange }: DropDownFieldProps) => {
   const { value, error, touched } = meta;
   const { setValue } = helpers;
 
-  const handleChange = (value: Moment) => {
-    if (!onChange) {
+  useEffect(() => {
+    if (!field.prefilled) {
       return;
     }
-  };
+    setValue(field.prefilled);
+  }, []);
 
   return (
     <FormControl
+      style={{ minWidth: 350 }}
+      className="grow"
       error={!!(touched && error)}
     >
       <InputLabel id="demo-simple-select-label">{field.label}</InputLabel>
       <Select
+        sx={{ minWidth: 230 }}
         labelId="demo-simple-select-label"
         id={field.id}
         value={value}
         label={field.label}
         name={field.fieldCode}
         required={field.validationRules?.required}
-        // onBlur={onBlur}
-        // onChange={onChange}
+        onChange={(e) => setValue(e.target.value as string)}
+        defaultValue={field.prefilled}
       >
         {field.dropdownValues.map((value) => (
           <MenuItem value={value.id}>{value.label}</MenuItem>
