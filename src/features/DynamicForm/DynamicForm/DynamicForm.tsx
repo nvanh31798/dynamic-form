@@ -95,7 +95,7 @@ export const DynamicForm = ({ dynamicForm, fetchStatus }: DynamicFormProps) => {
       validateOnBlur
       initialValues={{}}
       onSubmit={(values) => {
-        console.log("values");
+        console.log("values", values);
       }}
       validationSchema={
         _.isEmpty(validationSchema) ? Yup.object().shape({}) : validationSchema
