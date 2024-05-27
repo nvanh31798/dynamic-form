@@ -1,11 +1,9 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import counterReducer from "./slice/counter/counterSlice";
-import todoReducer from "./slice/todo/todoSlice";
+import dynamicFormReducer from "./slice/dynamicForm/dynamicFormSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    todo: todoReducer
+    dynamicForm: dynamicFormReducer,
   },
 });
 

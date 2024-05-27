@@ -8,6 +8,7 @@ import { FornFields } from "../Fields/FornFields";
 import { Button } from "@mui/material";
 import { FormikErrors, FormikTouched } from "formik";
 import { useValidation } from "../hooks/useValidation";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import _ from "lodash";
 
 interface StepperSectionProps {
@@ -65,6 +66,26 @@ export const StepperSection = ({
     ));
   };
 
+  const getReceipt = () => {
+    if (!!currentStep) {
+      return <></>;
+    }
+    return (
+      <div className="bg-green-50 w-full flex p-5 gap-5 items-center">
+        <CheckCircleOutlineIcon fontSize="small" color="success" />
+        <div className="">
+          <h1 className="font-bold text-xl text-green-800 mb-2">
+            New Insurance Policy Registration Successfully!!!
+          </h1>
+          <p className="text-sm font-thin	">
+            Total fee of the policy is:{" "}
+            <span className="font-bold text-green-800">1100</span>
+          </p>
+        </div>
+      </div>
+    );
+  };
+
   const handleNextStep = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -103,9 +124,10 @@ export const StepperSection = ({
         )}
         <div className="mt-5 flex flex-wrap gap-10 justify-evenly">
           {getStepConntent()}
+          {getReceipt()}
         </div>
         <div className="flex flex-row-reverse gap-5 mt-10">
-          {activeStep !== steps.length - 1 && (
+          {activeStep < steps.length - 1 && (
             <Button onClick={() => handleNextStep()} variant="contained">
               Next
             </Button>
@@ -121,7 +143,7 @@ export const StepperSection = ({
               Save
             </Button>
           )}
-          {activeStep > 0 && (
+          {activeStep > 0 && activeStep < steps.length &&(
             <Button
               onClick={() => handleBackStep()}
               color={"error"}
