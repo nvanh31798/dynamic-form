@@ -8,6 +8,7 @@
         {
             "id": "stepper-1",
             "type": "stepper",
+            "showReceipt": true,
             "steps": [
                 {
                     "id": "step-1",

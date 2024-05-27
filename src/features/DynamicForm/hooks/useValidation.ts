@@ -1,6 +1,5 @@
 import { Field } from "../../../types/dynamic-form/Field";
 import * as Yup from "yup";
-import { FieldType } from "../../../types/dynamic-form/FieldType";
 import moment from "moment";
 
 export const useValidation = () => {

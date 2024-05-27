@@ -23,6 +23,9 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import * as PolicyInfo from "./../../../mocks/PolicyInfo.json";
 import TablePaginationActions from "@mui/material/TablePagination/TablePaginationActions";
+import { useAppDispatch } from "../../../redux/hooks";
+import { openForm } from "../../../redux/slice/dynamicForm/dynamicFormSlice";
+import { fetchDynamicForm } from "../../../redux/thunks/fetchDynamicFormThunk";
 
 interface TableFieldProps {
   field: TableFieldModel;
@@ -32,7 +35,7 @@ export const TableField = ({ field }: TableFieldProps) => {
   type DataTableType = (typeof PolicyInfo)[0];
   const mockData: DataTableType[] = PolicyInfo;
   const [data, setdata] = useState(mockData);
-
+  const dispatch = useAppDispatch();
   const columns = useMemo<ColumnDef<DataTableType>[]>(
     () =>
       field.headers.map((header) => ({
@@ -79,13 +82,22 @@ export const TableField = ({ field }: TableFieldProps) => {
     setdata(matchedData);
   };
 
+  const handleAddNew = () => {
+    dispatch(fetchDynamicForm({ id: field?.addNewFormId }));
+    dispatch(openForm(true));
+  };
+
   const getTableAction = () => {
     if (!field.addable || !field.searchable) {
       return <></>;
     }
     return (
       <div className="flex gap-5 flex-row-reverse mb-3">
-        {field.addable && <Button variant="contained">Add</Button>}
+        {field.addable && (
+          <Button onClick={handleAddNew} variant="contained">
+            Add
+          </Button>
+        )}
         {field.searchable && (
           <TextField
             onChange={(e) => handleDataSearchChange(e)}

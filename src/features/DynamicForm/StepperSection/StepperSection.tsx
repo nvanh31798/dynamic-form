@@ -5,13 +5,20 @@ import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import { FornFields } from "../Fields/FornFields";
-import { Button } from "@mui/material";
+import {
+  Button,
+  StepConnector,
+  stepConnectorClasses,
+  styled,
+} from "@mui/material";
 import { FormikErrors, FormikTouched } from "formik";
 import { useValidation } from "../hooks/useValidation";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import _ from "lodash";
+import { StepperConnector } from "../../../components/StepperConnector/StepperConnector";
 
 interface StepperSectionProps {
+  showReceipts?: boolean;
   steps: StepModel[];
   onChange?: (
     e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -29,6 +36,7 @@ interface StepperSectionProps {
 
 export const StepperSection = ({
   steps,
+  showReceipts,
   onSubmit,
   setValidationSchema,
   validationForm,
@@ -67,7 +75,7 @@ export const StepperSection = ({
   };
 
   const getReceipt = () => {
-    if (!!currentStep) {
+    if (!!currentStep || !showReceipts) {
       return <></>;
     }
     return (
@@ -104,7 +112,7 @@ export const StepperSection = ({
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Stepper activeStep={activeStep}>
+      <Stepper activeStep={activeStep} connector={<StepperConnector />}>
         {steps.map((step, index) => {
           return (
             <Step key={`${step.id}-${index}`}>
@@ -112,9 +120,11 @@ export const StepperSection = ({
             </Step>
           );
         })}
-        <Step>
-          <StepLabel>Done</StepLabel>
-        </Step>
+        {showReceipts && (
+          <Step>
+            <StepLabel>Done</StepLabel>
+          </Step>
+        )}
       </Stepper>
       <div className="mt-10 p-5 shadow-md">
         {steps[activeStep]?.title && (
@@ -143,7 +153,7 @@ export const StepperSection = ({
               Save
             </Button>
           )}
-          {activeStep > 0 && activeStep < steps.length &&(
+          {activeStep > 0 && activeStep < steps.length && (
             <Button
               onClick={() => handleBackStep()}
               color={"error"}

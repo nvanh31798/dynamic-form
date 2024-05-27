@@ -13,6 +13,7 @@ export interface FormModel {
   export interface SectionModel {
     id: string
     type: SectionType;
+    showReceipt?: boolean;
     steps?: StepModel[]
   }
   

@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Formik, FormikErrors, FormikTouched } from "formik";
 import { SectionType } from "../../../types/dynamic-form/SectionType";
-import * as PolicyForm from "../../../mocks/PolicyForm.json";
 import { FormModel, SectionModel } from "../../../types/dynamic-form/Form";
 import { StepperSection } from "../StepperSection/StepperSection";
+import { ActionStatusEnum } from "../../../types/ActionStatusEnum";
+import { Box, CircularProgress } from "@mui/material";
+import * as Yup from "yup";
+import _ from "lodash";
 
-export const DynamicForm = () => {
-  const policyForm: FormModel = PolicyForm as FormModel;
-  const sections = policyForm.sections as SectionModel[];
+export interface DynamicFormProps {
+  dynamicForm: FormModel;
+  fetchStatus: ActionStatusEnum;
+}
+
+export const DynamicForm = ({ dynamicForm, fetchStatus }: DynamicFormProps) => {
   const [validationSchema, setValidationSchema] = useState({});
+
+  const sections = dynamicForm.sections as SectionModel[];
 
   const renderSection = (
     handleBlur: (
@@ -25,7 +33,7 @@ export const DynamicForm = () => {
       shouldValidate?: boolean | undefined
     ) => Promise<void | FormikErrors<{}>>
   ) => {
-    return sections.map((section) => {
+    return sections?.map((section) => {
       switch (section.type) {
         case SectionType.STEPPER:
           return (
@@ -35,6 +43,7 @@ export const DynamicForm = () => {
               onChange={handleChange}
               onSubmit={handleSubmit}
               steps={section.steps ?? []}
+              showReceipts={section.showReceipt}
               isValid={isValid}
               setTouched={setTouched}
               setValidationSchema={setValidationSchema}
@@ -47,6 +56,39 @@ export const DynamicForm = () => {
       }
     });
   };
+
+  if (fetchStatus === ActionStatusEnum.Pending) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (fetchStatus === ActionStatusEnum.Failed) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+        }}
+      >
+        Failed!
+      </Box>
+    );
+  }
+
   return (
     <Formik
       validateOnChange
@@ -55,11 +97,12 @@ export const DynamicForm = () => {
       onSubmit={(values) => {
         console.log("values");
       }}
-      validationSchema={validationSchema}
+      validationSchema={
+        _.isEmpty(validationSchema) ? Yup.object().shape({}) : validationSchema
+      }
     >
       {({
         isValid,
-        errors,
         handleBlur,
         handleChange,
         handleSubmit,

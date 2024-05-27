@@ -8,65 +8,11 @@
         {
             "id": "stepper-1",
             "type": "stepper",
+            "showReceipt": false,
             "steps": [
                 {
                     "id": "step-1",
-                    "label": "Insured Object",
-                    "fields": [
-                        {
-                            "id": "insured-table",
-                            "type": "field",
-                            "fieldType": "table",
-                            "headers": [
-                                {
-                                    "label": "Full Name",
-                                    "key": "fullName"
-                                },
-                                {
-                                    "label": "ID/Passport Number",
-                                    "key": "passportNumber"
-                                },
-                                {
-                                    "label": "Age",
-                                    "key": "age"
-                                },
-                                {
-                                    "label": "Gender",
-                                    "key": "gender"
-                                },
-                                {
-                                    "label": "Relationship",
-                                    "key": "relationship"
-                                },
-                                {
-                                    "label": "Package",
-                                    "key": "package"
-                                },
-                                {
-                                    "label": "Start Date",
-                                    "key": "startDate"
-                                },
-                                {
-                                    "label": "End Date",
-                                    "key": "endDate"
-                                },
-                                {
-                                    "label": "Fee",
-                                    "key": "fee"
-                                }
-                            ],
-                            "dataUrl": "http://localhost",
-                            "model": "InsuredObject",
-                            "searchable": true,
-                            "searchField": "fullName",
-                            "addable": true,
-                            "addNewFormId": 2
-                        }
-                    ]
-                },
-                {
-                    "id": "step-2",
-                    "label": "Buyer Information",
+                    "label": "Insured Object Information",
                     "title": "General Information",
                     "fields": [
                         {
@@ -158,6 +104,57 @@
                             "validationRules": {
                                 "required": false,
                                 "max": 100
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "step-2",
+                    "label": "Insurance Package",
+                    "title": "General Information",
+                    "fields": [
+                        {
+                            "id": "gender",
+                            "label": "Gender",
+                            "fieldType": "dropdown",
+                            "fieldCode": "gender",
+                            "dropdownValues": [
+                                {
+                                    "id": "Male",
+                                    "label": "Male"
+                                },
+                                {
+                                    "id": "Female",
+                                    "label": "Female"
+                                }
+                            ],
+                            "prefilled": "Male",
+                            "validationRules": {
+                                "required": true
+                            }
+                        },
+                        {
+                            "id": "dateOfBirth",
+                            "label": "Date of Birth",
+                            "fieldType": "datePicker",
+                            "fieldCode": "dateOfBirth",
+                            "prefilled": "",
+                            "validationRules": {
+                                "required": true,
+                                "max": 70,
+                                "minDate": "20/05/2024"
+                            }
+                        },
+                        {
+                            "id": "dateOfIssued",
+                            "label": "Date of Issued",
+                            "fieldType": "datePicker",
+                            "fieldCode": "dateOfIssued",
+                            "prefilled": "",
+                            "validationRules": {
+                                "required": true,
+                                "max": 50,
+                                "regex": "^[a-zA-Z"
                             }
                         }
                     ]
