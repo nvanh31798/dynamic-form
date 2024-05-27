@@ -31,8 +31,7 @@ export const DropDownField = ({ field, onChange }: DropDownFieldProps) => {
 
   return (
     <FormControl
-      style={{ minWidth: 350 }}
-      className="grow"
+      className="grow !min-w-[300px]"
       error={!!(touched && error)}
     >
       <InputLabel id="demo-simple-select-label">{field.label}</InputLabel>

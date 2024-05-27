@@ -16,9 +16,9 @@
                     "title": "General Information",
                     "fields": [
                         {
-                            "id": "fullName",
+                            "id": "fullName2",
                             "fieldCode": "fullName",
-                            "label": "Full Name",
+                            "label": "Full Name2",
                             "fieldType": "input",
                             "prefilled": "",
                             "validationRules": {
@@ -28,10 +28,10 @@
                             }
                         },
                         {
-                            "id": "dateOfBirth",
+                            "id": "dateOfBirth2",
                             "label": "Date of Birth",
                             "fieldType": "datePicker",
-                            "fieldCode": "dateOfBirth",
+                            "fieldCode": "dateOfBirth2",
                             "prefilled": "",
                             "validationRules": {
                                 "required": true,
@@ -40,10 +40,10 @@
                             }
                         },
                         {
-                            "id": "gender",
+                            "id": "gender2",
                             "label": "Gender",
                             "fieldType": "dropdown",
-                            "fieldCode": "gender",
+                            "fieldCode": "gender2",
                             "dropdownValues": [
                                 {
                                     "id": "Male",
@@ -60,9 +60,9 @@
                             }
                         },
                         {
-                            "id": "passportNumber",
+                            "id": "passportNumber2",
                             "label": "ID/Passport Number",
-                            "fieldCode": "passportNumber",
+                            "fieldCode": "passportNumber2",
                             "fieldType": "input",
                             "prefilled": "",
                             "validationRules": {
@@ -72,10 +72,10 @@
                             }
                         },
                         {
-                            "id": "dateOfIssued",
+                            "id": "dateOfIssued2",
                             "label": "Date of Issued",
                             "fieldType": "datePicker",
-                            "fieldCode": "dateOfIssued",
+                            "fieldCode": "dateOfIssued2",
                             "prefilled": "",
                             "validationRules": {
                                 "required": true,
@@ -84,10 +84,10 @@
                             }
                         },
                         {
-                            "id": "placeOfIssued",
+                            "id": "placeOfIssued2",
                             "label": "Place of Issued",
                             "fieldType": "input",
-                            "fieldCode": "placeOfIssued",
+                            "fieldCode": "placeOfIssued2",
                             "prefilled": "",
                             "validationRules": {
                                 "required": false,
@@ -98,7 +98,7 @@
                         {
                             "id": "address",
                             "label": "Address",
-                            "fieldCode": "address",
+                            "fieldCode": "address2",
                             "fieldType": "input",
                             "prefilled": "",
                             "validationRules": {
@@ -114,30 +114,34 @@
                     "title": "General Information",
                     "fields": [
                         {
-                            "id": "gender",
-                            "label": "Gender",
+                            "id": "insurancePackage3",
+                            "label": "Insurance Package",
                             "fieldType": "dropdown",
-                            "fieldCode": "gender",
+                            "fieldCode": "insurancePackage3",
                             "dropdownValues": [
                                 {
-                                    "id": "Male",
-                                    "label": "Male"
+                                    "id": "golden",
+                                    "label": "Golden"
                                 },
                                 {
-                                    "id": "Female",
-                                    "label": "Female"
+                                    "id": "silver",
+                                    "label": "Silver"
+                                },
+                                {
+                                    "id": "bronze",
+                                    "label": "Bronze"
                                 }
                             ],
-                            "prefilled": "Male",
+                            "prefilled": "bronze",
                             "validationRules": {
                                 "required": true
                             }
                         },
                         {
-                            "id": "dateOfBirth",
+                            "id": "dateOfBirth3",
                             "label": "Date of Birth",
                             "fieldType": "datePicker",
-                            "fieldCode": "dateOfBirth",
+                            "fieldCode": "dateOfBirth3",
                             "prefilled": "",
                             "validationRules": {
                                 "required": true,
@@ -146,16 +150,74 @@
                             }
                         },
                         {
-                            "id": "dateOfIssued",
+                            "id": "dateOfIssued3",
                             "label": "Date of Issued",
                             "fieldType": "datePicker",
-                            "fieldCode": "dateOfIssued",
+                            "fieldCode": "dateOfIssued3",
                             "prefilled": "",
                             "validationRules": {
                                 "required": true,
                                 "max": 50,
                                 "regex": "^[a-zA-Z"
                             }
+                        },
+                        {
+                            "id": "insuranceCheckbox3",
+                            "fieldType": "checkbox",
+                            "fieldCode": "insuranceCheckbox3",
+                            "title": "Mandatory Insurance Benefits",
+                            "checkboxValues": [
+                                {
+                                    "id": "checkbox1",
+                                    "label": "Death and permenant total disability due to accident/year.",
+                                    "checked": true,
+                                    "disabled": true,
+                                    "helperText": "Insurance amount: $50.000"
+                                },
+                                {
+                                    "id": "checkbox2",
+                                    "label": "Death and permenant total disability due to accident/year.",
+                                    "checked": true,
+                                    "disabled": true,
+                                    "helperText": "Insurance amount: $50.000"
+                                },
+                                {
+                                    "id": "checkbox3",
+                                    "label": "Death and permenant total disability due to accident/year.",
+                                    "checked": true,
+                                    "disabled": true,
+                                    "helperText": "Insurance amount: $50.000"
+                                },
+                                {
+                                    "id": "checkbox4",
+                                    "label": "Death and permenant total disability due to accident/year.",
+                                    "checked": true,
+                                    "disabled": true,
+                                    "helperText": "Insurance amount: $50.000"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "insuranceCheckbox3",
+                            "fieldType": "checkbox",
+                            "fieldCode": "insuranceCheckbox1",
+                            "title": "Additional Insurance Benefits",
+                            "checkboxValues": [
+                                {
+                                    "id": "checkbox1",
+                                    "label": "Death and permenant total disability due to accident/year.",
+                                    "checked": false,
+                                    "disabled": false,
+                                    "helperText": "Insurance amount: $50.000"
+                                },
+                                {
+                                    "id": "checkbox2",
+                                    "label": "Death and permenant total disability due to accident/year.",
+                                    "checked": false,
+                                    "disabled": false,
+                                    "helperText": "Insurance amount: $50.000"
+                                }
+                            ]
                         }
                     ]
                 }

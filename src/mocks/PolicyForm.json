@@ -71,8 +71,8 @@
                     "title": "General Information",
                     "fields": [
                         {
-                            "id": "fullName",
-                            "fieldCode": "fullName",
+                            "id": "fullName1",
+                            "fieldCode": "fullName1",
                             "label": "Full Name",
                             "fieldType": "input",
                             "prefilled": "",
@@ -83,10 +83,10 @@
                             }
                         },
                         {
-                            "id": "dateOfBirth",
+                            "id": "dateOfBirth1",
                             "label": "Date of Birth",
                             "fieldType": "datePicker",
-                            "fieldCode": "dateOfBirth",
+                            "fieldCode": "dateOfBirth1",
                             "prefilled": "",
                             "validationRules": {
                                 "required": true,
@@ -95,10 +95,10 @@
                             }
                         },
                         {
-                            "id": "gender",
+                            "id": "gender1",
                             "label": "Gender",
                             "fieldType": "dropdown",
-                            "fieldCode": "gender",
+                            "fieldCode": "gender1",
                             "dropdownValues": [
                                 {
                                     "id": "Male",
@@ -115,9 +115,9 @@
                             }
                         },
                         {
-                            "id": "passportNumber",
+                            "id": "passportNumber1",
                             "label": "ID/Passport Number",
-                            "fieldCode": "passportNumber",
+                            "fieldCode": "passportNumber1",
                             "fieldType": "input",
                             "prefilled": "",
                             "validationRules": {
@@ -127,10 +127,10 @@
                             }
                         },
                         {
-                            "id": "dateOfIssued",
+                            "id": "dateOfIssued1",
                             "label": "Date of Issued",
                             "fieldType": "datePicker",
-                            "fieldCode": "dateOfIssued",
+                            "fieldCode": "dateOfIssued1",
                             "prefilled": "",
                             "validationRules": {
                                 "required": true,
@@ -139,10 +139,10 @@
                             }
                         },
                         {
-                            "id": "placeOfIssued",
+                            "id": "placeOfIssued1",
                             "label": "Place of Issued",
                             "fieldType": "input",
-                            "fieldCode": "placeOfIssued",
+                            "fieldCode": "placeOfIssued1",
                             "prefilled": "",
                             "validationRules": {
                                 "required": false,
@@ -151,7 +151,7 @@
                             }
                         },
                         {
-                            "id": "address",
+                            "id": "address1",
                             "label": "Address",
                             "fieldCode": "address",
                             "fieldType": "input",

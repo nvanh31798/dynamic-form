@@ -94,7 +94,10 @@ export const StepperSection = ({
     );
   };
 
-  const handleNextStep = () => {
+  const handleNextStep = (errors?: void | FormikErrors<{}>) => {
+    if (!_.isEmpty(errors)) {
+      return;
+    }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
@@ -107,6 +110,9 @@ export const StepperSection = ({
       return;
     }
     onSubmit?.();
+    if (!showReceipts) {
+      return;
+    }
     handleNextStep();
   };
 
@@ -138,7 +144,10 @@ export const StepperSection = ({
         </div>
         <div className="flex flex-row-reverse gap-5 mt-10">
           {activeStep < steps.length - 1 && (
-            <Button onClick={() => handleNextStep()} variant="contained">
+            <Button
+              onClick={() => setStepFieldTouched(true, handleNextStep)}
+              variant="contained"
+            >
               Next
             </Button>
           )}
@@ -154,11 +163,7 @@ export const StepperSection = ({
             </Button>
           )}
           {activeStep > 0 && activeStep < steps.length && (
-            <Button
-              onClick={() => handleBackStep()}
-              color={"error"}
-              variant="contained"
-            >
+            <Button onClick={() => handleBackStep()} variant="outlined">
               Back
             </Button>
           )}
