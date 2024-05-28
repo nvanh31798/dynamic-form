@@ -15,7 +15,7 @@ interface SummaryTableProps {
 
 export const SummaryTable = ({ creationDate, fee }: SummaryTableProps) => {
   return (
-    <TableContainer sx={{ minWidth: 250 }} className="h-fit w-full hidden md:block" component={Paper}>
+    <TableContainer className="!min-w-[250px] h-fit" component={Paper}>
       <Table>
         <TableHead>
           <TableRow>

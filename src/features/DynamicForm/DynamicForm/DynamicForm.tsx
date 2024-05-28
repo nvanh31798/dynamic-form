@@ -109,7 +109,7 @@ export const DynamicForm = ({ dynamicForm, fetchStatus }: DynamicFormProps) => {
         validateForm,
         setTouched,
       }) => (
-        <Form className="flex-auto">
+        <Form className="w-full">
           {renderSection(
             handleBlur,
             handleChange,

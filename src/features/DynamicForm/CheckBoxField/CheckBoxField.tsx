@@ -1,9 +1,4 @@
 import {
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  FormHelperText,
   Checkbox,
   FormControlLabel,
   FormGroup,
